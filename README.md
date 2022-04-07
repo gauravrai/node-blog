@@ -27,8 +27,8 @@ Headless testing, feature testing, automated authentication CI
 
 ```mermaid
 flowchart TD
-    A[Start react app] --> B[npm run test]
-    B -- --> C[start Jest suite]
+    A[Start react app] --> B[npm run test];
+    B -- --> C[start Jest suite];
 
 ```
 
