@@ -28,8 +28,11 @@ Headless testing, feature testing, automated authentication CI
 ```mermaid
 flowchart TD
     A[Start react app]-->B[npm run test];
-    B--Yes-->C[start Jest suite];
-
+    B-->C[start Jest suite];
+    C-->D[boot headless version of chromium];
+    D-->E[Programatically visit local server];
+    E-->F[Programatically click links];
+    F-->G[Make assertions];
 ```
 
 ### React App SPA
