@@ -1,20 +1,16 @@
-const puppeteer = require('puppeteer')
-
 const sessionFactory = require('./factories/sessionFactory')
 const userFactory = require('./factories/userFactory')
+const Page = require('./helpers/page')
 
-let browser, page
+let page
 
 beforeEach(async () => {
-    browser = await puppeteer.launch({
-        headless: false
-    })
-    page  = await browser.newPage()
+    page = await Page.build()
     await page.goto('localhost:3000')
 })
 
 afterEach(async () => {
-    await browser.close()
+    await page.close()
 })
 
 test('Header has correct logo text', async () => {
@@ -43,7 +39,7 @@ test('When signed in show logout button', async () => {
     })
     await page.setCookie({
         name: 'session.sig',
-        value: sig
+        value: sig  
     })
     await page.goto('localhost:3000')
     await page.waitFor('a[href="/auth/logout"]')
